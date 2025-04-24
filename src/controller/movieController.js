@@ -2,6 +2,10 @@ const axios = require("axios");
 const { TMDB_BASE_URL, TMDB_HEADERS } = require("../config/tmdb");
 
 exports.getMovies = async (req, res) => {
+  if (!API_KEY) {
+    return res.status(500).json({ error: "TMDB API key is missing in server" });
+  }
+
   try {
     const { page = 1, id } = req.query;
 
@@ -40,6 +44,10 @@ exports.getMovies = async (req, res) => {
 
 exports.searchMovies = async (req, res) => {
   const { query } = req.query;
+
+  if (!API_KEY) {
+    return res.status(500).json({ error: "TMDB API key is missing in server" });
+  }
 
   if (!query) {
     return res.status(400).json({ error: "Missing 'query' parameter" });
