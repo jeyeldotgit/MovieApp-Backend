@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { TMDB_BASE_URL, TMDB_HEADERS } = require("../config/tmdb");
+const { TMDB_BASE_URL, TMDB_HEADERS, API_KEY } = require("../config/tmdb");
 
 exports.getMovies = async (req, res) => {
   if (!API_KEY) {
